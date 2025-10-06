@@ -21,7 +21,7 @@ struct ContentView: View {
                 Tab(tab.name, systemImage: tab.image, value: tab) {
                     switch tab {
                     case .home:
-                        Text("Home View")
+                        HomeView()
                      case .favorites:
                         Text("Favorites")
                     }

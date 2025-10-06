@@ -11,6 +11,7 @@ struct ThemeColors {
     
     static let shared = ThemeColors()
     
+    var backgroundColor = Color(.background)
     var primaryColor = Color(.primary)
     var onPrimaryColor = Color(.onPrimary)
     /*
@@ -30,7 +31,6 @@ struct ThemeColors {
     /*
      var scrimColor = Color(.scrim)
      var inverseSurfaceColor = Color(.inverseSurface)
-     var backgroundColor = Color(.planBackground)
      var onSurfaceVariantColor = Color(.planOnSurfaceVariant)
      var surfaceVariantColor = Color(.planSurfaceVariant)
      */

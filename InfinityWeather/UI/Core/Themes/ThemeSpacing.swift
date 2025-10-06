@@ -25,6 +25,8 @@ struct ThemeSpacing {
     var buttonPadding: CGFloat { md }
     var cardPadding: CGFloat { lg }
     var cardRadius: CGFloat { md }
+    var btnRadius: CGFloat { lg }
+
     var sectionSpacing: CGFloat { xl }
     var screenPadding: CGFloat { md }
     var containerPadding: CGFloat { ThemeSpacing.baseUnit * 4 }
