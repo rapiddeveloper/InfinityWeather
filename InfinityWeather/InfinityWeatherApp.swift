@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct InfinityWeatherApp: App {
+    
+    var theme = Theme()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(theme)
         }
     }
 }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Eczar-Bold.ttf</string>
+		<string>Eczar-ExtraBold.ttf</string>
+		<string>Eczar-Medium.ttf</string>
+		<string>Eczar-Regular.ttf</string>
+		<string>Eczar-SemiBold.ttf</string>
+		<string>Roboto_Condensed-Black.ttf</string>
+		<string>Roboto_Condensed-Bold.ttf</string>
+		<string>Roboto_Condensed-Light.ttf</string>
+		<string>Roboto_Condensed-Medium.ttf</string>
+		<string>Roboto_Condensed-Regular.ttf</string>
+		<string>Roboto_Condensed-SemiBold.ttf</string>
+	</array>
+</dict>
+</plist>
