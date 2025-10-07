@@ -104,7 +104,7 @@ func groupWeatherCards(_ data: [WeatherAttribute]) -> [[WeatherAttribute]] {
 
 #Preview {
 
-    var store = WeatherStore()
+    let store = WeatherStore()
     store.setWeather(.previewItem)
 
     // 1. Data for the three cards in the image
@@ -113,7 +113,7 @@ func groupWeatherCards(_ data: [WeatherAttribute]) -> [[WeatherAttribute]] {
     let card2 = WeatherAttribute.previewSingleValueNoSubheadline
 
     let card3 = WeatherAttribute.previewList
-    var card4 = WeatherAttribute.previewHumidity
+    let card4 = WeatherAttribute.previewHumidity
     let card5 = WeatherAttribute.previewHeat
     let card6 = WeatherAttribute.previewPressure
     let card7 = WeatherAttribute.previewUV

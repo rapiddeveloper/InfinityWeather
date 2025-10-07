@@ -12,7 +12,7 @@ struct ThemeColors {
     static let shared = ThemeColors()
     
     var backgroundColor = Color(.background)
-    var primaryColor = Color(.primary)
+    var primaryColor = Color(.appPrimary)
     var onPrimaryColor = Color(.onPrimary)
     /*
     var primaryContainerColor = Color(.primaryContainer)
