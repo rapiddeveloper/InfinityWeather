@@ -3,13 +3,16 @@
 //  InfinityWeather
 //
 //  Created by Orisajobi Akinbola on 10/7/25.
-//
+/*
+ Abstract: Entry point for the Weather details screen
+ */
 
 import SwiftUI
 
 struct WeatherDetails: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        WeatherDetailsView()
+    
     }
 }
 

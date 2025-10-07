@@ -22,8 +22,8 @@ struct ThemeColors {
     var onSecondaryColor = Color(.onSecondary)
     var tertiaryColor = Color(.tertiary)
     var onTertiaryColor = Color(.onTertiary)
-    var surfaceColor = Color(.surface1)
      */
+    var surfaceColor = Color(.surface)
     var surfaceContainerColor = Color(.surfaceContainer)
     var surfaceContainerLowColor = Color(.surfaceContainerLow)
     

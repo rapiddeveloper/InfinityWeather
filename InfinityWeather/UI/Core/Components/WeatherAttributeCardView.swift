@@ -39,11 +39,14 @@ struct WeatherAttributeCardView: View {
                 WeatherAttributeListContentView(attributes: attributes)
             }
         }
+
         .padding(.horizontal, theme.spacing.sm)
         .padding(.vertical, theme.spacing.md)
         .frame(maxWidth: attribute.style.isList ? .infinity : 180.0, alignment: .topLeading)
         .frame(height: 180.0)
-        .clipShape(RoundedRectangle(cornerRadius: theme.spacing.cardRadius))
+        .background(theme.colors.surfaceContainerLowColor, in: RoundedRectangle(cornerRadius: 20))
+       // .clipShape(RoundedRectangle(cornerRadius: 20))
+
         // Apply a subtle shadow to make it look like a floating card
         .shadow(color: Color.gray.opacity(0.1), radius: 5, x: 0, y: 3)
     }

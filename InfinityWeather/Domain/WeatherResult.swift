@@ -13,4 +13,7 @@ struct Weather {
     var avgTemp: String
     var condition: String
     var avgTempLevel: String
+    var city: String
+    
+    var attributes: [WeatherAttribute] = []
 }

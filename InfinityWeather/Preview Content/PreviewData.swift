@@ -12,7 +12,7 @@ extension Weather {
         icon: "cloud.fill",
         displayActualTemp: "Feels Like 78°",
         avgTemp: "81°",
-        condition: "Cloudy", avgTempLevel: "Low")
+        condition: "Cloudy", avgTempLevel: "Low", city: "Eti Osa")
     //static let previewData = [
 }
 
@@ -20,6 +20,26 @@ extension WeatherAttribute {
     static let previewSingleValue: WeatherAttribute = .init(
         systemImage: "cloud.fill",
         title: "Feels Lide", style: .singleValue(value: "+29°C", description: "above average daily high average daily high", details: [(label: "Today", value: "H:29°C"), (label: "Average", value: "H:30°C")])
+    )
+    
+    static let previewHumidity: WeatherAttribute = .init(
+        systemImage: "cloud.fill",
+        title: "Humidity", style: .singleValue(value: "+30°C", description: "above average daily high average daily high", details: [(label: "Today", value: "H:29°C"), (label: "Average", value: "H:30°C")])
+    )
+    
+    static let previewHeat: WeatherAttribute = .init(
+        systemImage: "cloud.fill",
+        title: "Heat", style: .singleValue(value: "+30°C", description: "above average daily high average daily high", details: [(label: "Today", value: "H:29°C"), (label: "Average", value: "H:30°C")])
+    )
+    
+    static let previewPressure: WeatherAttribute = .init(
+        systemImage: "cloud.fill",
+        title: "Pressure", style: .singleValue(value: "+29°C", description: "above average daily high average daily high", details: [(label: "Today", value: "H:29°C"), (label: "Average", value: "H:30°C")])
+    )
+    
+    static let previewUV: WeatherAttribute = .init(
+        systemImage: "cloud.fill",
+        title: "UV Index", style: .singleValue(value: "+29°C", description: "above average daily high average daily high", details: [(label: "Today", value: "H:29°C"), (label: "Average", value: "H:30°C")])
     )
     
     static let previewSingleValueNoSubheadline: WeatherAttribute = .init(
