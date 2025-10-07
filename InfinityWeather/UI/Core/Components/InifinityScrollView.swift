@@ -10,14 +10,16 @@ import SwiftUI
 struct InifinityScrollView<Content>: View where Content: View {
     
     var content: () -> Content
+    var spacing: CGFloat
     
-    init(@ViewBuilder content:  @escaping () -> Content) {
+    init(spacing: CGFloat = 0, @ViewBuilder content:  @escaping () -> Content) {
         self.content = content
+        self.spacing = spacing
     }
     
     var body: some View {
         ScrollView {
-            LazyVStack(spacing: 0) {
+            LazyVStack(spacing: spacing) {
                 content()
             }
           
