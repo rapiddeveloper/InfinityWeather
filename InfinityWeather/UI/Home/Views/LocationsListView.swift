@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HomeBodyView: View {
+struct LocationsListView: View {
     
     @Environment(Theme.self) private var theme
     var locations: [LocationCoordinates]
@@ -22,6 +22,7 @@ struct HomeBodyView: View {
                 } label: {
                     LocationCardView(locationCoordinate: locationCoordinate)
                 }
+                .buttonStyle(.plain)
 
             }
             Spacer()

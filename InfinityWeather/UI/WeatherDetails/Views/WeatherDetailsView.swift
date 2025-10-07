@@ -10,57 +10,57 @@ import SwiftUI
 struct WeatherDetailsView: View {
 
     @Environment(Theme.self) private var theme
-    var weather: Weather?
-
-    // Define a responsive grid layout: two flexible columns
-    let columns: [GridItem] = [
-        // This item takes up half the available width
-        GridItem(.flexible()),
-        // This item takes up the other half
-        GridItem(.flexible()),
-    ]
+    var weather: LocationWeather?
+    var detailsStatus: RequestStatus
 
     var body: some View {
-        if let weather = weather {
-            InifinityScrollView {
-                WeatherDetailsHeaderView(weather: weather)
-                /*
-                LazyVGrid(columns: columns) {
-                     ForEach(weather.attributes) { attribute in
-                         WeatherAttributeCardView(attribute: attribute)
-                    }
-                }*/
-                
-                Grid(
-                    alignment: .center, horizontalSpacing: theme.spacing.md,
-                    verticalSpacing: theme.spacing.md
-                ) {
-                    let dynamicallyGroupedData = groupWeatherCards(weather.attributes)
 
-                    // Loop through the array of rows we just created.
-                    // Each inner array represents a single GridRow.
-                    ForEach(dynamicallyGroupedData, id: \.first!.id) {
-                        row in
-                    
-                        GridRow {
-                            // Loop through the cards in the current row.
-                            ForEach(row) { card in
+        InifinityScrollView {
+            if let weather = weather, detailsStatus == .completed {
+                Group {
+                    WeatherDetailsHeaderView(weather: weather)
 
-                                WeatherAttributeCardView(attribute: card)
-                                    .gridCellColumns(
-                                        card.style.isList ? 2 : 1)
-                                    .frame(maxWidth: .infinity)
-                                // If the row only has one card (and it's a single value card),
-                                // we let it take one column, leaving the other empty for now.
+                    Grid(
+                        alignment: .center, horizontalSpacing: theme.spacing.md,
+                        verticalSpacing: theme.spacing.md
+                    ) {
+                        let dynamicallyGroupedData = groupWeatherCards(
+                            weather.attributes)
+
+                        // Loop through the array of rows we just created.
+                        // Each inner array represents a single GridRow.
+                        ForEach(dynamicallyGroupedData, id: \.first!.id) {
+                            row in
+
+                            GridRow {
+                                // Loop through the cards in the current row.
+                                ForEach(row) { card in
+
+                                    WeatherAttributeCardView(attribute: card)
+                                        .gridCellColumns(
+                                            card.style.isList ? 2 : 1
+                                        )
+                                        .frame(maxWidth: .infinity)
+                                    // If the row only has one card (and it's a single value card),
+                                    // we let it take one column, leaving the other empty for now.
+                                }
                             }
                         }
+
                     }
-                    
+                    .padding(theme.spacing.containerPadding)
+
+                    Spacer()
+
                 }
-                .padding(theme.spacing.containerPadding)
-                Spacer()
+                .ignoresSafeArea()
+
+
             }
-            .ignoresSafeArea()
+
+            RequestStatusView(status: detailsStatus) {
+
+            }
 
         }
 
@@ -118,18 +118,17 @@ func groupWeatherCards(_ data: [WeatherAttribute]) -> [[WeatherAttribute]] {
     let card6 = WeatherAttribute.previewPressure
     let card7 = WeatherAttribute.previewUV
 
-
-
     // Combine all attributes into a single array
-    let weatherData: [WeatherAttribute] = [card1, card2,card3, card4, card5, card6, card7]
-   // let weatherData: [WeatherAttribute] = [card1, card2, card3, card4, card5]
+    let weatherData: [WeatherAttribute] = [
+        card1, card2, card3, card4, card5, card6, card7,
+    ]
+    // let weatherData: [WeatherAttribute] = [card1, card2, card3, card4, card5]
 
-    var tempWeather = Weather.previewItem
+    var tempWeather = LocationWeather.previewItem
     tempWeather.attributes = weatherData
     store.setWeather(tempWeather)
 
-
-    return WeatherDetailsView(weather: store.weather)
+    return WeatherDetailsView(weather: store.weather, detailsStatus: .idle)
         .environment(store)
         .environment(Theme())
 }

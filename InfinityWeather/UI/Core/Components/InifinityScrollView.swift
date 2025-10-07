@@ -25,8 +25,7 @@ struct InifinityScrollView<Content>: View where Content: View {
           
         }
         .scrollIndicators(.hidden)
-       //  .ignoresSafeArea()
-        .containerStyle()
+         .containerStyle()
     }
 }
 

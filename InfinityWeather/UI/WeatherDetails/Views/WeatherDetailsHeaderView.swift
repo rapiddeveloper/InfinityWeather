@@ -10,7 +10,7 @@ import SwiftUI
 struct WeatherDetailsHeaderView: View {
      
     @Environment(Theme.self) private var theme
-    var weather: Weather
+    var weather: LocationWeather
     
     var body: some View {
              VStack {

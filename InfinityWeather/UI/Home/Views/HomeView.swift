@@ -18,18 +18,23 @@ struct HomeView: View {
     @Environment(Theme.self) private var theme
  
     var body: some View {
-        NavigationStack {
             InifinityScrollView(spacing: theme.spacing.containerPadding) {
                 if  !locations.isEmpty {
                     Text("Now showing \(locations.count) matching locations for \(searchCity)")
                         .font(.headline)
                         .multilineTextAlignment(.center)
                 }
-                HomeBodyView(locations: locations, onViewDetails: onViewDetails)
+                LocationsListView(locations: locations, onViewDetails: onViewDetails)
 
                 if searchStatus == .completed && locations.isEmpty {
                     Text("No matching locations found for \(searchCity)")
                         .font(.headline)
+                        .multilineTextAlignment(.center)
+                }
+                
+                if searchStatus == .idle && locations.isEmpty {
+                    Text("Get started by searching for a city")
+                        .font(.title3)
                         .multilineTextAlignment(.center)
                 }
                 
@@ -39,12 +44,13 @@ struct HomeView: View {
                 }
                 
             }
+            
             .searchable(text: $searchCity, prompt: "Enter a city")
             .onSubmit(of: .search, {
                 onBeginSearch()
             })
             .navigationTitle("Home")
-        }
+        
 
     }
 }

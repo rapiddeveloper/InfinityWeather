@@ -5,9 +5,9 @@
 //  Created by Orisajobi Akinbola on 10/6/25.
 //
 
-extension Weather {
+extension LocationWeather {
     
-    static let previewItem: Weather = .init(
+    static let previewItem: LocationWeather = .init(
         displayTempRange: "High: 84° - Low 75°",
         icon: "cloud.fill",
         displayActualTemp: "Feels Like 78°",
@@ -55,7 +55,7 @@ extension WeatherAttribute {
     
     static let previewList: WeatherAttribute = .init(
         systemImage: "cloud.fill",
-        title: "Feels Lide",
+        title: "Feels Like",
         style: .list(attributes:  [(label: "Wind", value: "8 mph"),
                                    (label: "Gusts", value: "13 mph"),
                                    (label: "Direction", value: "220 SW")

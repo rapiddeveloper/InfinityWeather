@@ -6,7 +6,7 @@
 //
 
 
-struct LocationCoordinates: Identifiable {
+struct LocationCoordinates: Identifiable, Hashable {
     let city: String
     let lat, lon: String
     let countryCode: String

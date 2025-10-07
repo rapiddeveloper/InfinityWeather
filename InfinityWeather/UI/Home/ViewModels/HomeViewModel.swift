@@ -13,12 +13,12 @@ import SwiftUI
 class HomeViewModel {
     
     var city: String = ""
-    var weather: Weather?
+    var weather: LocationWeather?
     var weatherService: WeatherService
     var searchResults: [LocationCoordinates] = []
     
  
-    init(weather: Weather? = nil, weatherService: WeatherService = .shared) {
+    init(weather: LocationWeather? = nil, weatherService: WeatherService = .shared) {
         self.weatherService = weatherService
         self.weather = weather
 
@@ -33,8 +33,7 @@ class HomeViewModel {
         do {
             searchResults = try result.get()
         } catch {
-            print("Request Error: \(error)")
-            throw RequestError.unexpected(error.localizedDescription)
+             throw RequestError.unexpected(error.localizedDescription)
         }
     }
 }

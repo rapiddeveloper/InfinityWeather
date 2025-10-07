@@ -11,9 +11,25 @@ import Foundation
 @Observable
 class WeatherStore {
     
-    private(set) var weather: Weather?
+    private(set) var weather: LocationWeather?
+    private let weatherService: WeatherServiceProtocol
     
-    func setWeather(_ newValue: Weather?)  {
+    init(weather: LocationWeather? = nil, weatherService: WeatherServiceProtocol = WeatherService()) {
+        self.weather = weather
+        self.weatherService = weatherService
+        print("creating weather store")
+    }
+    
+    func setWeather(_ newValue: LocationWeather?)  {
         weather = newValue
+    }
+    
+    func loadWeather(forLocation location: LocationCoordinates) async throws {
+      let result = await weatherService.getCurrentWeather(forLocation: location)
+        do {
+            weather = try result.get()
+        } catch {
+            throw RequestError.unexpected(error.localizedDescription)
+        }
     }
 }

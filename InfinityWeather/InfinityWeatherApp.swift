@@ -11,6 +11,7 @@ import SwiftUI
 struct InfinityWeatherApp: App {
     
     var theme = Theme()
+    var router = NavigationRouter()
     /// the error details's  model
     var appErrorDetails = ErrorDetails()
     @State var appError: RequestError?

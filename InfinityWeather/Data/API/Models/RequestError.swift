@@ -8,10 +8,11 @@
 
  import Foundation
 
-enum RequestStatus {
+enum RequestStatus: Equatable {
     case idle
     case pending
     case completed
+    case failed(RequestError)
 }
 
 enum RequestError: Equatable, LocalizedError, Error {

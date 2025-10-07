@@ -11,7 +11,7 @@ struct WeatherSummaryView: View {
 
     @Environment(Theme.self) private var theme
 
-    var item: Weather?
+    var item: LocationWeather?
 
     var body: some View {
         if let weatherItem = item {
