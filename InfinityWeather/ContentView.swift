@@ -13,10 +13,9 @@ struct ContentView: View {
     
     @Environment(Theme.self) private var theme
     @Environment(NavigationRouter.self) private var router
-
+    //@State private var selectedTab: In
     
-    @State private var selection: MainTab = .home
-    
+ 
     var body: some View {
         
         @Bindable var bindableRouter = self.router
@@ -31,8 +30,10 @@ struct ContentView: View {
                     }
                    
                 }
+                
             }
         }
+        .tint(theme.colors.primaryColor)
     }
 }
 

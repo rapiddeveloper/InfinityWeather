@@ -1,0 +1,12 @@
+//
+//  Dev.xcconfig
+//  InfinityWeather
+//
+//  Created by Orisajobi Akinbola on 10/8/25.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+OPEN_WEATHER_API_KEY=15e0c36e638616deac74caf6d54e703e
+BASE_URL=https://api.openweathermap.org

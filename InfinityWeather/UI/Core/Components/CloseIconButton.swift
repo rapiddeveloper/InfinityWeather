@@ -20,7 +20,7 @@ struct IconButton: View {
             action()
         }, label: {
             Image(systemName: systemImage)
-                .foregroundStyle(isEnabled ? theme.colors.onSurfaceColor : theme.colors.primaryColor)
+                .foregroundStyle(isEnabled ? theme.colors.primaryColor : theme.colors.onSurfaceColor)
                 .background(content: {
                     Circle()
                         .fill(theme.colors.onPrimaryColor)

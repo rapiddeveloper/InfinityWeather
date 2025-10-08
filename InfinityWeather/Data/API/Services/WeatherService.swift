@@ -23,20 +23,22 @@ class WeatherService: HTTPClient, WeatherServiceProtocol {
 
     static let shared = WeatherService()
     let limit = "5"
-    let apiKey = "15e0c36e638616deac74caf6d54e703e"
-    let baseURL = "https://api.openweathermap.org"
+    let apiKey: String
+    let baseURL: String
 
-    init() {}
+    init() {
+        guard let apiKey = Bundle.main.object(forInfoDictionaryKey: "OPEN_WEATHER_API_KEY") as? String else {
+           fatalError("API_KEY not found in Info.plist")
+        }
+        
+        guard let baseURL = Bundle.main.object(forInfoDictionaryKey: "BASE_URL") as? String else {
+           fatalError("BASE_URL not found in Info.plist")
+        }
+        self.baseURL = baseURL
+        self.apiKey = apiKey
+    }
 
-    /*
-    func getCurrentWeather() -> Result<Any, RequestError> {
-
-        // get city coordinates
-         // get current weather data
-        // transform weather data
-        return .failure(.unexpected(nil))
-    }*/
-
+    
     func getMatchingCities(forQuery query: String) async -> Result<
         [LocationCoordinate], RequestError
     > {

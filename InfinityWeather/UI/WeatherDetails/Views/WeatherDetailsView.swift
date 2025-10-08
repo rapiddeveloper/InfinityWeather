@@ -20,6 +20,7 @@ struct WeatherDetailsView: View {
                 Group {
                     WeatherDetailsHeaderView(weather: weather)
 
+
                     Grid(
                         alignment: .center, horizontalSpacing: theme.spacing.md,
                         verticalSpacing: theme.spacing.md
@@ -57,6 +58,7 @@ struct WeatherDetailsView: View {
 
 
             }
+
 
             RequestStatusView(status: detailsStatus) {
 
