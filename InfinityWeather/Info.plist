@@ -16,5 +16,12 @@
 		<string>Roboto_Condensed-Regular.ttf</string>
 		<string>Roboto_Condensed-SemiBold.ttf</string>
 	</array>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIColorName</key>
+		<string>AppPrimaryColor</string>
+		<key>UILaunchScreen</key>
+		<dict/>
+	</dict>
 </dict>
 </plist>

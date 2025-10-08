@@ -9,13 +9,15 @@ import SwiftUI
 
 @main
 struct InfinityWeatherApp: App {
-    
+
+    @State var isFinished = false
+
     var theme = Theme()
     var router = NavigationRouter()
     /// the error details's  model
     var appErrorDetails = ErrorDetails()
     var favoritesStore = FavoritesStore()
- 
+
     var showAlertBinding: Binding<Bool> {
         Binding {
             appErrorDetails.requestError != nil
@@ -28,18 +30,36 @@ struct InfinityWeatherApp: App {
     }
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(theme)
-                .environment(appErrorDetails)
-                .environment(favoritesStore)
-                .environment(router)
-                .alert(isPresented: showAlertBinding, error: appErrorDetails.requestError) { _ in
-                    Button("OK") {
-                        
+
+            if !isFinished {
+                SplashScreen()
+                    .environment(theme)
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                            withAnimation(.easeInOut(duration: 3.0)) {
+                                isFinished = true
+                            }
+                        }
                     }
-                } message: { error in
-                    Text(error.recoverySuggestion ?? "Try again later")
-                }
+            } else {
+                ContentView()
+                    .environment(theme)
+                    .environment(appErrorDetails)
+                    .environment(favoritesStore)
+                    .environment(router)
+                    .alert(
+                        isPresented: showAlertBinding,
+                        error: appErrorDetails.requestError
+                    ) { _ in
+                        Button("OK") {
+
+                        }
+                    } message: { error in
+                        Text(error.recoverySuggestion ?? "Try again later")
+                    }
+
+            }
+
         }
     }
 }
