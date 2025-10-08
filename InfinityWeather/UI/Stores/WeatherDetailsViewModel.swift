@@ -9,7 +9,7 @@ import SwiftUI
 import Foundation
 
 @Observable
-class WeatherStore {
+class WeatherDetailsViewModel {
     
     private(set) var weather: LocationWeather?
     private let weatherService: WeatherServiceProtocol
@@ -17,8 +17,7 @@ class WeatherStore {
     init(weather: LocationWeather? = nil, weatherService: WeatherServiceProtocol = WeatherService()) {
         self.weather = weather
         self.weatherService = weatherService
-        print("creating weather store")
-    }
+     }
     
     func setWeather(_ newValue: LocationWeather?)  {
         weather = newValue

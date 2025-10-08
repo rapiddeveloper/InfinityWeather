@@ -12,7 +12,7 @@ import SwiftUI
 struct WeatherDetails: View {
     
     var location: LocationCoordinate?
-    @State private var weatherDetailsVM: WeatherStore = WeatherStore()
+    @State private var weatherDetailsVM: WeatherDetailsViewModel = WeatherDetailsViewModel()
     @Environment(ErrorDetails.self) private var errorDetails
     @Environment(FavoritesStore.self) private var favoritesStore
     @Environment(\.dismiss) private var dismiss
