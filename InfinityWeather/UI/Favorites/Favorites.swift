@@ -8,8 +8,23 @@
 import SwiftUI
 
 struct Favorites: View {
+    
+    @Environment(FavoritesStore.self) private var favoritesStore
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            FavoritesView(favoriteLocations: favoritesStore.favorites, onViewDetails: handleViewDetails)
+                .navigationTitle("Favorites")
+        }
+       
+    }
+}
+
+
+extension Favorites {
+    
+    private func handleViewDetails(_ location: LocationCoordinate) {
+        
     }
 }
 
