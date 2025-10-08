@@ -15,7 +15,8 @@ struct HomeHeaderView: View {
 
     var body: some View {
         VStack {
-            WeatherSummaryView(item: homeVM.weather)
+            Text("Weather Summary")
+           // WeatherSummaryView(item: homeVM.weather)
         }
         
         .containerRelativeFrame(.vertical, alignment: .center) { len, axis in

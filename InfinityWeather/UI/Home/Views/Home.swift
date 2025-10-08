@@ -9,10 +9,15 @@ import SwiftUI
 
 struct Home: View {
     
-    @State private var homeVM = HomeViewModel(weather: .previewItem)
     @Environment(ErrorDetails.self) private var errorDetails
+    @Environment(FavoritesStore.self) private var favoritesStore
+    @Environment(NavigationRouter.self) private var router
+    
+    @State private var homeVM = HomeViewModel()
     @State private var handleSearchStatus: RequestStatus = .idle
-    @State private var selectedLocation : LocationCoordinates?
+    @State private var selectedLocation : LocationCoordinate?
+    @State private var hasPrepopulatedSearchCity = false
+
     
     var body: some View {
         NavigationStack {
@@ -24,12 +29,20 @@ struct Home: View {
                     }
                     
                 })
+                .onAppear(perform: handleAppear)
                 
+ 
         }
      }
 }
 
 extension Home {
+    
+    func handleAppear() {
+        guard !hasPrepopulatedSearchCity else { return }
+        homeVM.updateSearchCity(favoritesStore.recentlyFavoritedCity)
+        hasPrepopulatedSearchCity = true
+    }
     
     func handleBeginSearch()  {
         
@@ -49,7 +62,7 @@ extension Home {
         }
     }
     
-    func handleViewDetails(coordinate: LocationCoordinates) {
+    func handleViewDetails(coordinate: LocationCoordinate) {
         selectedLocation = coordinate
     }
 }

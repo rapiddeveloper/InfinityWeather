@@ -13,9 +13,9 @@ import Foundation
 protocol WeatherServiceProtocol {
 
     func getMatchingCities(forQuery query: String) async -> Result<
-        [LocationCoordinates], RequestError
+        [LocationCoordinate], RequestError
     >
-    func getCurrentWeather(forLocation location: LocationCoordinates) async
+    func getCurrentWeather(forLocation location: LocationCoordinate) async
         -> Result<LocationWeather, RequestError>
 }
 
@@ -38,7 +38,7 @@ class WeatherService: HTTPClient, WeatherServiceProtocol {
     }*/
 
     func getMatchingCities(forQuery query: String) async -> Result<
-        [LocationCoordinates], RequestError
+        [LocationCoordinate], RequestError
     > {
 
         let endpoint = "\(baseURL)/geo/1.0/direct"
@@ -59,7 +59,7 @@ class WeatherService: HTTPClient, WeatherServiceProtocol {
 
         do {
             let coordinates = try result.get().map({
-                LocationCoordinates(from: $0)
+                LocationCoordinate(from: $0)
             })
             return .success(coordinates)
         } catch {
@@ -68,7 +68,7 @@ class WeatherService: HTTPClient, WeatherServiceProtocol {
 
     }
 
-    func getCurrentWeather(forLocation location: LocationCoordinates) async
+    func getCurrentWeather(forLocation location: LocationCoordinate) async
         -> Result<LocationWeather, RequestError>
     {
 

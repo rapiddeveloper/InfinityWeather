@@ -11,13 +11,14 @@ import SwiftUI
 
 struct WeatherDetails: View {
     
-    var location: LocationCoordinates?
+    var location: LocationCoordinate?
     @State private var weatherDetailsVM: WeatherStore = WeatherStore()
     @Environment(ErrorDetails.self) private var errorDetails
+    @Environment(FavoritesStore.self) private var favoritesStore
     @Environment(\.dismiss) private var dismiss
     @State private var weatherDetailsStatus: RequestStatus = .idle
     
-     init(location: LocationCoordinates? = nil) {
+     init(location: LocationCoordinate? = nil) {
          self.location = location
        //  _weatherDetailsVM = State(initialValue: WeatherStore())
     }
@@ -31,9 +32,10 @@ struct WeatherDetails: View {
                         }
                     }
                     ToolbarItem(placement: .confirmationAction) {
-                        IconButton(systemImage: "star.fill") {
-                            
+                        IconButton(systemImage: "star.fill", isEnabled: favoritesStore.hasSavedLocation(location)) {
+                            favoritesStore.saveLocation(location)
                         }
+                        
                     }
                 })
                 .onAppear(perform: handleAppear)

@@ -10,9 +10,9 @@ import SwiftUI
 struct LocationsListView: View {
     
     @Environment(Theme.self) private var theme
-    var locations: [LocationCoordinates]
+    var locations: [LocationCoordinate]
     
-    var onViewDetails: (LocationCoordinates) -> Void 
+    var onViewDetails: (LocationCoordinate) -> Void 
     
     var body: some View {
         Group {
@@ -37,7 +37,7 @@ struct LocationsListView: View {
 struct LocationCardView: View {
     
     @Environment(Theme.self) private var theme
-    var locationCoordinate: LocationCoordinates
+    var locationCoordinate: LocationCoordinate
     
     var body: some View {
         VStack(alignment: .leading, spacing: theme.spacing.md) {

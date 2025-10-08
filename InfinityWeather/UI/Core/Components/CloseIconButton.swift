@@ -11,6 +11,8 @@ struct IconButton: View {
     
     @Environment(Theme.self) private var theme
     var systemImage: String
+    var isEnabled: Bool = false
+
     var action: () -> Void = {}
 
     var body: some View {
@@ -18,7 +20,7 @@ struct IconButton: View {
             action()
         }, label: {
             Image(systemName: systemImage)
-                .foregroundStyle(theme.colors.primaryColor)
+                .foregroundStyle(isEnabled ? theme.colors.onSurfaceColor : theme.colors.primaryColor)
                 .background(content: {
                     Circle()
                         .fill(theme.colors.onPrimaryColor)

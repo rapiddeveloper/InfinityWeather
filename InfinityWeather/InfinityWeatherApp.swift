@@ -14,8 +14,8 @@ struct InfinityWeatherApp: App {
     var router = NavigationRouter()
     /// the error details's  model
     var appErrorDetails = ErrorDetails()
-    @State var appError: RequestError?
-
+    var favoritesStore = FavoritesStore()
+ 
     var showAlertBinding: Binding<Bool> {
         Binding {
             appErrorDetails.requestError != nil
@@ -29,9 +29,10 @@ struct InfinityWeatherApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                
                 .environment(theme)
                 .environment(appErrorDetails)
+                .environment(favoritesStore)
+                .environment(router)
                 .alert(isPresented: showAlertBinding, error: appErrorDetails.requestError) { _ in
                     Button("OK") {
                         

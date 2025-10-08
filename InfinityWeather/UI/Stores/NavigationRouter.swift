@@ -10,4 +10,9 @@ import SwiftUI
 @Observable
 class NavigationRouter {
      var route: Route = .home
+     var mainRoutes : [Route] = [.home, .favorites]
+    
+    func navigateTo(_ route: Route) {
+        self.route = route
+    }
 }

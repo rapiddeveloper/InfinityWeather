@@ -24,7 +24,7 @@ class WeatherStore {
         weather = newValue
     }
     
-    func loadWeather(forLocation location: LocationCoordinates) async throws {
+    func loadWeather(forLocation location: LocationCoordinate) async throws {
       let result = await weatherService.getCurrentWeather(forLocation: location)
         do {
             weather = try result.get()

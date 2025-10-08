@@ -11,16 +11,20 @@ struct HomeView: View {
     
     @Binding var searchCity: String
     var searchStatus: RequestStatus
-    var locations: [LocationCoordinates]
+    var locations: [LocationCoordinate]
     var onBeginSearch: () -> Void
-    var onViewDetails: (LocationCoordinates) -> Void
-    
+    var onViewDetails: (LocationCoordinate) -> Void
+ 
     @Environment(Theme.self) private var theme
+    
+     
  
     var body: some View {
             InifinityScrollView(spacing: theme.spacing.containerPadding) {
                 if  !locations.isEmpty {
-                    Text("Now showing \(locations.count) matching locations for \(searchCity)")
+                    Text("Now showing \(locations.count) matching locations")
+                  //  Text("Now showing \(locations.count) matching locations for \(searchCity)")
+
                         .font(.headline)
                         .multilineTextAlignment(.center)
                 }
@@ -47,9 +51,10 @@ struct HomeView: View {
             
             .searchable(text: $searchCity, prompt: "Enter a city")
             .onSubmit(of: .search, {
-                onBeginSearch()
+                 onBeginSearch()
             })
             .navigationTitle("Home")
+             
         
 
     }

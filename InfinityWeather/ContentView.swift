@@ -12,19 +12,24 @@ import SwiftUI
 struct ContentView: View {
     
     @Environment(Theme.self) private var theme
+    @Environment(NavigationRouter.self) private var router
+
     
     @State private var selection: MainTab = .home
     
     var body: some View {
-        TabView(selection: $selection) {
-            ForEach(MainTab.allCases) { tab in
+        
+        @Bindable var bindableRouter = self.router
+        
+        TabView(selection: $bindableRouter.route) {
+            ForEach(bindableRouter.mainRoutes) { tab in
                 Tab(tab.name, systemImage: tab.image, value: tab) {
-                    switch tab {
-                    case .home:
+                    if tab == .home {
                         Home()
-                     case .favorites:
-                        Text("Favorites")
+                    } else if tab == .favorites {
+                        Favorites()
                     }
+                   
                 }
             }
         }

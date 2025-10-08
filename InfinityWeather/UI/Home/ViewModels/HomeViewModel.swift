@@ -13,15 +13,13 @@ import SwiftUI
 class HomeViewModel {
     
     var city: String = ""
-    var weather: LocationWeather?
-    var weatherService: WeatherService
-    var searchResults: [LocationCoordinates] = []
+     var weatherService: WeatherService
+    var searchResults: [LocationCoordinate] = []
     
  
-    init(weather: LocationWeather? = nil, weatherService: WeatherService = .shared) {
+    init(weatherService: WeatherService = WeatherService()) {
         self.weatherService = weatherService
-        self.weather = weather
-
+        print("creating home model")
     }
     
     
@@ -35,5 +33,9 @@ class HomeViewModel {
         } catch {
              throw RequestError.unexpected(error.localizedDescription)
         }
+    }
+    
+    func updateSearchCity(_ newCity: String) {
+        city = newCity
     }
 }

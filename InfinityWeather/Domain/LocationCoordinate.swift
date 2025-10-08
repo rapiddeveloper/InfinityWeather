@@ -6,14 +6,14 @@
 //
 
 
-struct LocationCoordinates: Identifiable, Hashable {
+struct LocationCoordinate: Identifiable, Hashable, Codable {
     let city: String
     let lat, lon: String
     let countryCode: String
     let state: String
     
     var id: String {
-        lon
+        lon+lat
     }
     
     var fullName: String {
